@@ -2,7 +2,9 @@
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.bulkInsert('Games', [{ title: 'Fix it Felix Jr.',
+
+    return queryInterface.bulkInsert('Games', [{
+      title: 'Fix it Felix Jr.',
       price: 50,
       releaseYear: 1982,
       active: true,
@@ -32,7 +34,14 @@ module.exports = {
       active: true,
       createdAt: new Date(),
       updatedAt: new Date()
-    }], {})
+    }
+    ], {});
+  },
+
+  down: (queryInterface, Sequelize) => {
+    return queryInterface.bulkDelete('Games', null, {});
+  }
+};
     /*
       Add altering commands here.
       Return a promise to correctly handle asynchronicity.
@@ -43,10 +52,7 @@ module.exports = {
         isBetaMember: false
       }], {});
     */
-  },
 
-  down: (queryInterface, Sequelize) => {
-    return queryInterface.bulkDelete('Games', null, {})
 
     /*
       Add reverting commands here.
@@ -55,5 +61,3 @@ module.exports = {
       Example:
       return queryInterface.bulkDelete('People', null, {});
     */
-  }
-};
